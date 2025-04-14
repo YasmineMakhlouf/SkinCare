@@ -1,6 +1,6 @@
 # Skincare Backend
 
-The **Skincare Backend** is a RESTful API built with Node.js, Express, Sequelize, and MySQL. It supports user management, service listings, appointment bookings, payments, and review functionalities.  
+The **Skincare Backend** is a RESTFUL API built with Node.js, Express, Sequelize, and MySQL. It supports user management, service listings, appointment bookings, payments, and review functionalities.  
 This backend powers a modern skincare platform, handling all data processing and business logic behind the scenes.
 
 ---
