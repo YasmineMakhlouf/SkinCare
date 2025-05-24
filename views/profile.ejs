@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile - <%= user.user_name %></title>
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+<body>
+  <h1>Welcome, <%= user.user_name %>!</h1>
+
+  <div class="profile-container">
+    <div class="profile-image">
+      <% if (user.user_image) { %>
+        <img src="<%= user.user_image %>" alt="Profile Image" />
+      <% } else { %>
+        <img src="/images/default-profile.png" alt="Default Profile Image" />
+      <% } %>
+    </div>
+
+    <div class="profile-info">
+      <h2>Your Information</h2>
+      <p><span class="info-label">User ID:</span> <%= user.user_id %></p>
+      <p><span class="info-label">Email:</span> <%= user.user_email %></p>
+      <p><span class="info-label">Phone:</span> <%= user.user_phone || 'Not provided' %></p>
+      <p><span class="info-label">Address:</span> <%= user.user_address || 'Not provided' %></p>
+      <p><span class="info-label">Date Joined:</span> 
+        <%= new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+      </p>
+    </div>
+  </div>
+
+  <form action="/profile/upload" method="POST" enctype="multipart/form-data">
+    <label for="profileImage">Upload/Change Profile Picture:</label>
+    <input type="file" name="profileImage" id="profileImage" accept="image/*" required />
+    <button type="submit">Upload</button>
+  </form>
+
+  <% if (errorMessage) { %>
+    <p class="error-message"><%= errorMessage %></p>
+  <% } %>
+
+  <div class="links">
+    <a href="/home">Go to Home</a>
+    <a href="/logout">Logout</a>
+  </div>
+</body>
+</html>

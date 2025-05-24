@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Users - Admin Panel</title>
+  <link rel="stylesheet" href="/css/manageUsers.css" />
+</head>
+<body>
+  <h1>Admin Dashboard - Manage Users</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Is Admin</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (users && users.length > 0) { %>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.user_id %></td>
+            <td><%= user.user_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.user_id === 5 ? 'Yes' : 'No' %></td>
+            <td>
+              <form action="/users/<%= user.user_id %>?_method=PUT" method="POST" style="display:inline-block;">
+                <button type="submit" class="btn btn-update">Update</button>
+              </form>
+              <form action="/users/<%= user.user_id %>?_method=DELETE" method="POST" style="display:inline-block;" onsubmit="return confirm('Delete this user?');">
+                <button type="submit" class="btn btn-delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="5" style="text-align:center;">No users found</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <h2>Create New User</h2>
+  <form action="/users" method="POST">
+    <input type="text" name="user_name" placeholder="Username" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <select name="role">
+      <option value="user" selected>User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button type="submit">Add User</button>
+  </form>
+</body>
+</html>

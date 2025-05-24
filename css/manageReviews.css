@@ -1,0 +1,82 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(214, 51, 108, 0.15);
+}
+
+h1 {
+  text-align: center;
+  color: #d6336c; /* Pink */
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f8bbd0; /* Light pink */
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.inline-form {
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+
+select, input[type="text"] {
+  padding: 0.3rem 0.5rem;
+  margin-right: 0.3rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+input[type="text"] {
+  width: 200px;
+}
+
+.btn-update {
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+}
+
+.btn-update:hover {
+  background-color: #b02658;
+}
+
+.btn-delete {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+}
+
+.btn-delete:hover {
+  background-color: #555;
+}

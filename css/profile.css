@@ -1,0 +1,117 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff0f6;
+    color: #333;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 192, 203, 0.4);
+  }
+  
+  h1 {
+    color: #e91e63;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .profile-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  .profile-image {
+    flex: 0 0 220px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #e91e63aa;
+    overflow: hidden;
+  }
+  
+  .profile-image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 220px;
+  }
+  
+  .profile-info {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px #f8bbd0aa;
+  }
+  
+  .profile-info h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #c2185b;
+  }
+  
+  .profile-info p {
+    margin: 6px 0;
+    font-size: 1rem;
+  }
+  
+  .info-label {
+    font-weight: 600;
+    color: #ad1457;
+  }
+  
+  form {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    color: #880e4f;
+  }
+  
+  input[type="file"] {
+    margin: 10px 0 15px;
+    cursor: pointer;
+  }
+  
+  button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ad1457;
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  
+  .links {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .links a {
+    margin: 0 15px;
+    color: #c2185b;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .links a:hover {
+    color: #880e4f;
+    text-decoration: underline;
+  }
+  

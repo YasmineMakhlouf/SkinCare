@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Payments</title>
+  <link rel="stylesheet" href="/css/managePayments.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>All Payments</h1>
+
+    <% if (payments.length === 0) { %>
+      <p>No payments found.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th> <!-- New column -->
+          </tr>
+        </thead>
+        <tbody>
+          <% payments.forEach(payment => { %>
+            <tr>
+              <td><%= payment.id %></td>
+              <td><%= payment.user_id %></td>
+              <td>$<%= (typeof payment.amount === 'number' ? payment.amount.toFixed(2) : '0.00') %></td>
+              <td><%= payment.method %></td>
+              <td><%= payment.status %></td>
+              <td><%= new Date(payment.createdAt).toLocaleDateString() %></td>
+              <td>
+                <!-- Update Payment Form -->
+                <form action="/payments/<%= payment.id %>?_method=PUT" method="POST" class="inline-form">
+                  <select name="status" required>
+                    <option value="pending" <%= payment.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                    <option value="completed" <%= payment.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                    <option value="failed" <%= payment.status === 'failed' ? 'selected' : '' %>>Failed</option>
+                  </select>
+                  <button type="submit" class="btn-update">Update</button>
+                </form>
+
+                <!-- Delete Payment Form -->
+                <form action="/payments/<%= payment.id %>?_method=DELETE" method="POST" class="inline-form">
+                  <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this payment?');">
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>

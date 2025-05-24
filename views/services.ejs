@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Services - Amani Skin Care</title>
+  <link rel="stylesheet" href="/css/services.css" />
+</head>
+<body>
+  <header>
+    <h1>Amani Skin Care - Services</h1>
+    <p>Discover our exclusive skincare services tailored for you</p>
+  </header>
+
+  <main>
+    <div class="services-container">
+      <% if (services && services.length > 0) { %>
+        <% services.forEach(service => { %>
+          <div class="service-card">
+            <h2><%= service.service_name %></h2>
+            <p>Price: $<%= service.service_price %></p>
+            <p>Duration: <%= service.service_duration %> minutes</p>
+            <p><%= service.service_description %></p>
+          </div>
+        <% }) %>        
+      <% } else { %>
+        <p class="no-services">No services available at the moment. Please check back later!</p>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

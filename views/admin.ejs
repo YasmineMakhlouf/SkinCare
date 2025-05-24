@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Amani Skin Care</title>
+  <link href="https://fonts.cdnfonts.com/css/outfit" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fff0f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #d6336c;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(214,51,108,0.4);
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+    }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .welcome {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .welcome h2 {
+      font-weight: 600;
+      color: #d6336c;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(214,51,108,0.15);
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 5px 20px rgba(214,51,108,0.35);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #d6336c;
+      font-weight: 600;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #b02658;
+    }
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem 0;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Amani Skin Care Admin Dashboard</h1>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Hello, <%= user.name %> 👋</h2>
+      <p>Manage your users, services, appointments, payments, and reviews here.</p>
+    </section>
+
+    <section class="grid-container">
+      <div class="card">
+        <h3>Users Management</h3>
+        <p>View all users, update details, or delete accounts.</p>
+        <a href="/users" class="btn">Manage Users</a>
+      </div>
+
+      <div class="card">
+        <h3>Services Management</h3>
+        <p>Create, update, or delete services offered to your clients.</p>
+        <a href="/manageServices" class="btn">Manage Services</a>
+      </div>
+
+      <div class="card">
+        <h3>Appointments</h3>
+        <p>View, update, or cancel client appointments.</p>
+        <a href="/manageAppointments" class="btn">View All Appointments</a>
+      </div>
+
+      <div class="card">
+        <h3>Payments</h3>
+        <p>Track payments and process refunds if needed.</p>
+        <a href="/managePayments" class="btn">Manage Payments</a>
+      </div>
+
+      <div class="card">
+        <h3>Reviews</h3>
+        <p>Approve, update, or delete customer reviews.</p>
+        <a href="/manageReviews" class="btn">Manage Reviews</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Amani Skin Care. Admin Panel</p>
+  </footer>
+
+</body>
+</html>

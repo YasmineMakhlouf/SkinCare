@@ -1,4 +1,6 @@
 const UserRepository = require('../repositories/UserRepository');
+const bcrypt = require('bcrypt');
+const User = require('../models/User'); 
 
 class UserService {
   /**
@@ -10,11 +12,27 @@ class UserService {
    */
   async createUser(userData) {
     try {
-      return await UserRepository.createUser(userData);
+      const emailExists = await User.findOne({ where: { user_email: userData.user_email } });
+      if (emailExists) {
+        throw new Error('This email is already registered.');
+      }
+  
+      const usernameExists = await User.findOne({ where: { user_name: userData.user_name } });
+      if (usernameExists) {
+        throw new Error('This username is already taken.');
+      }
+  
+      const hashedPassword = await bcrypt.hash(userData.user_password, 10);
+      userData.user_password = hashedPassword;
+  
+      const newUser = await UserRepository.createUser(userData);
+      return newUser;
+  
     } catch (error) {
-      throw new Error(`Failed to create user: ${error.message}`);
+      throw new Error(error.message);
     }
   }
+  
 
   /**
    * Retrieves all user records.
@@ -112,6 +130,19 @@ class UserService {
       return result;
     } catch (error) {
       throw new Error(`Failed to delete user: ${error.message}`);
+    }
+  }
+
+  /**
+   * Find a user by username or email.
+   * @param {string} usernameOrEmail - The username or email to search.
+   * @returns {Object|null} - The user if found, else null.
+   */
+  async findUserByEmail(email) {
+    try {
+      return await UserRepository.findUserByEmail(email);
+    } catch (error) {
+      throw new Error(`UserService - findUserByEmail: ${error.message}`);
     }
   }
 }

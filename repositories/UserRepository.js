@@ -39,7 +39,7 @@ class UserRepository {
   async getUserByName(user_name) {
     return await User.findOne({ where: { user_name } });
   }
-  
+
   /**
  * Retrieve a user by their email address.
  * 
@@ -76,6 +76,23 @@ class UserRepository {
     await user.destroy();
     return { message: 'User deleted successfully' };
   }
+
+  /**
+   * Find a user by username or email.
+   * @param {string} usernameOrEmail - The username or email to search.
+   * @returns {Object|null} - The user if found, else null.
+   */
+  async findUserByEmail(email) {
+    try {
+      const user = await User.findOne({
+        where: { user_email: email }
+      });
+      return user;
+    } catch (error) {
+      throw new Error(`Database error while finding user by email: ${error.message}`);
+    }
+  }
+  
 }
 
 module.exports = new UserRepository();

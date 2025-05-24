@@ -6,18 +6,18 @@ exports.createUser = [
   body('user_email')
     .isEmail().withMessage('A valid email is required'),
   body('user_password')
-    .notEmpty().withMessage('Password is required'),
+    .isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
   body('user_phone')
     .notEmpty().withMessage('Phone number is required'),
-  // user_address is optional and does not require validation
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(422).render('register', { errorMessage: errors.array()[0].msg });
     }
     next();
   }
 ];
+
 
 exports.updateUser = [
   body('user_name')
@@ -37,6 +37,24 @@ exports.updateUser = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
+    }
+    next();
+  }
+];
+
+exports.loginValidator = [
+  body('user_email')
+    .isEmail().withMessage('Please provide a valid email address')
+    .notEmpty().withMessage('Email is required'),
+
+  body('user_password')
+    .notEmpty().withMessage('Password is required'),
+
+  // Handle validation errors
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
     next();
   }

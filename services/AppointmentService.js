@@ -14,7 +14,7 @@ class AppointmentService {
     } catch (error) {
       throw new Error(`Failed to create appointment: ${error.message}`);
     }
-  }
+  }  
 
   /**
    * Retrieves all appointments.
@@ -45,6 +45,13 @@ class AppointmentService {
     }
   }
 
+  async getAppointmentsByUser(userId) {
+    try {
+      return await AppointmentRepository.getAppointmentsByUser(userId);
+    } catch (error) {
+      throw new Error(`Failed to get appointments by user: ${error.message}`);
+    }
+  }
   /**
    * Updates an existing appointment by its ID.
    * 

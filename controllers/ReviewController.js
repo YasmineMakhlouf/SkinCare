@@ -10,75 +10,75 @@ class ReviewController {
   async createReview(req, res) {
     try {
       const review = await ReviewService.createReview(req.body);
-      return res.status(201).json(review);
+      return res.redirect('/reviews');
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
 
   /**
-   * Get all reviews.
-   * @param {Object} req - Express request object.
-   * @param {Object} res - Express response object.
-   * @returns {Array} List of all reviews.
-   */
+ * Get all reviews and render the review page.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
   async getAllReviews(req, res) {
     try {
       const reviews = await ReviewService.getAllReviews();
-      return res.status(200).json(reviews);
+      return res.render('review', { reviews });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
 
   /**
-   * Get a review by ID.
+   * Get a review by ID and render reviewDetails page.
    * @param {Object} req - Express request object with review_id in req.params.
    * @param {Object} res - Express response object.
-   * @returns {Object} The review data or 404 if not found.
+   * 
    */
   async getReviewById(req, res) {
     try {
       const { review_id } = req.params;
       const review = await ReviewService.getReviewById(review_id);
-      if (!review) return res.status(404).json({ message: 'Review not found' });
-      return res.status(200).json(review);
+      if (!review) return res.status(404).render('notFound', { message: 'Review not found' });
+      return res.render('reviewDetails', { review });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
 
   /**
-   * Update a review by ID.
+   * Update a review by ID and redirect to all reviews.
    * @param {Object} req - Express request object with review_id in req.params and update data in req.body.
    * @param {Object} res - Express response object.
-   * @returns {Object} The updated review.
+   * 
    */
   async updateReview(req, res) {
     try {
       const { review_id } = req.params;
-      const review = await ReviewService.updateReview(review_id, req.body);
-      return res.status(200).json(review);
+      await ReviewService.updateReview(review_id, req.body);
+      return res.redirect('/reviews');
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
 
   /**
-   * Delete a review by ID.
+   * Delete a review by ID and redirect to all reviews.
    * @param {Object} req - Express request object with review_id in req.params.
    * @param {Object} res - Express response object.
-   * @returns {Object} The result of the delete operation.
+   * 
    */
   async deleteReview(req, res) {
     try {
       const { review_id } = req.params;
-      const result = await ReviewService.deleteReview(review_id);
-      return res.status(200).json(result);
+      await ReviewService.deleteReview(review_id);
+      return res.redirect('/reviews');
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
+
 }
 
 module.exports = new ReviewController();

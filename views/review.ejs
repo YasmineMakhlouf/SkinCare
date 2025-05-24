@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews</title>
+  <link rel="stylesheet" href="/css/review.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Customer Reviews</h1>
+
+    <div class="reviews">
+      <% if (reviews.length === 0) { %>
+        <p>No reviews yet.</p>
+      <% } else { %>
+        <% reviews.forEach(review => { %>
+          <div class="review">
+            <h3>Service ID: <%= review.service_id %></h3>
+            <p><strong>User:</strong> <%= review.user_id %></p>
+            <p><strong>Rating:</strong> <%= review.review_rating %>/5</p>
+            <p><%= review.review_text %></p>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+
+    <form class="review-form" action="/reviews" method="POST">
+      <h2>Leave a Review</h2>
+      <input type="number" name="user_id" placeholder="User ID" required />
+      <input type="number" name="service_id" placeholder="Service ID" required />
+      <input type="number" name="review_rating" min="1" max="5" placeholder="Rating (1-5)" />
+      <textarea name="review_text" placeholder="Write your review..."></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #f16690;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #333;
+}
+
+/* Welcome Section */
+.welcome {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.welcome h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #f16690;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Services Section */
+.services {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.service-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.service-card {
+    background-color: #f16690;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 1rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #fff;
+    color: #f16690;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #f1e4e8;
+    color: #333;
+}
+
+/* Pricing Section */
+.pricing {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.pricing-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.price-item {
+    background-color: #f16690;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+}
+
+.price-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.price-item p {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}

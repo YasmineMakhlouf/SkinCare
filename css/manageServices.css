@@ -1,0 +1,93 @@
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #fff0f6;
+    color: #333;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    color: #d6336c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form.create-form, .service-card form {
+    margin-top: 15px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 180px;
+  }
+  
+  button {
+    background-color: #d6336c;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #b52a59;
+  }
+  
+  .service-list {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .service-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  .service-card h3 {
+    margin-top: 0;
+    color: #d6336c;
+  }
+  
+  .service-card p {
+    margin: 6px 0;
+  }
+  
+  .update-form input {
+    width: 140px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .delete-form {
+    margin-top: 10px;
+    text-align: right;
+  }
+  
+  .delete-btn {
+    background-color: #e03131;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b21f1f;
+  }
+  

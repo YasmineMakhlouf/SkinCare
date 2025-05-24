@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const Service = require('../models/Service');
 
 class ServiceRepository {
@@ -60,6 +61,24 @@ class ServiceRepository {
     if (!service) return null;
     await service.destroy();
     return { message: 'Service deleted successfully' };
+  }
+  /**
+   * Get services by price comparison.
+   * @param {string} operator - '>' or '<'
+   * @param {number} price - Threshold value
+   * @returns {Promise<Array>} Matching service records
+   */
+
+  async getServicesByPrice(operator, price) {
+    const op = operator === '>' ? Op.gt : Op.lt;
+
+    return await Service.findAll({
+      where: {
+        service_price: {
+          [op]: price
+        }
+      }
+    });
   }
 }
 

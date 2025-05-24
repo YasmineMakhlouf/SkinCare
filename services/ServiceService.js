@@ -100,6 +100,20 @@ class ServiceService {
       throw new Error(`Failed to delete service: ${error.message}`);
     }
   }
+  /**
+   * Retrieves services based on price comparison.
+   * @param {string} operator - '>' or '<'
+   * @param {number} price - Threshold value
+   * @returns {Promise<Array>} Matching services
+   * @throws {Error} If retrieval fails
+   */
+  async getServicesByPrice(operator, price) {
+    try {
+      return await ServiceRepository.getServicesByPrice(operator, price);
+    } catch (error) {
+      throw new Error(`Failed to retrieve services by price: ${error.message}`);
+    }
+  }
 }
 
 module.exports = new ServiceService();

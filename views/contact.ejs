@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Amani Skin Care</title>
+    <link rel="stylesheet" href="/css/contact.css">
+    <link href="https://fonts.cdnfonts.com/css/outfit" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Amani Skin Care</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            <a href="/appointments">Book Appointment</a>
+            <a href="/aboutus">About Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h1>Get in Touch</h1>
+            <p>If you have questions, feedback, or need help with booking, we're here for you!</p>
+
+            <div class="contact-container">
+                <form class="contact-form" action="/contact" method="POST">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <h2>Contact Details</h2>
+                    <p><strong>Email:</strong> <a href="mailto:SkinCare@gmail.com">SkinCare@gmail.com</a></p>
+                    <p><strong>Phone:</strong> +961 03 123 456</p>
+                    <p><strong>Location:</strong> Tripoli, Lebanon</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Amani Skin Care. All rights reserved.</p>
+    </footer>
+</body>
+</html>

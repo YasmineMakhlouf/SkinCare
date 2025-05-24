@@ -11,24 +11,24 @@ class PaymentController {
   async createPayment(req, res) {
     try {
       const payment = await PaymentService.createPayment(req.body);
-      return res.status(201).json(payment);
+      return res.redirect('/payment');
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).render('error', { error: error.message });
     }
   }
 
   /**
-   * Get all payments.
-   * @param {Object} req - Express request object.
-   * @param {Object} res - Express response object.
-   * @returns {Array} List of all payments.
-   */
+ * Get all payments.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @returns {Array} List of all payments.
+ */
   async getAllPayments(req, res) {
     try {
       const payments = await PaymentService.getAllPayments();
-      return res.status(200).json(payments);
+      return res.render('payments', { payments });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.render('error', { error: error.message });
     }
   }
 
@@ -42,10 +42,10 @@ class PaymentController {
     try {
       const { payment_id } = req.params;
       const payment = await PaymentService.getPaymentById(payment_id);
-      if (!payment) return res.status(404).json({ message: 'Payment not found' });
-      return res.status(200).json(payment);
+      if (!payment) return res.render('notfound', { message: 'Payment not found' });
+      return res.render('paymentDetails', { payment });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.render('error', { error: error.message });
     }
   }
 
@@ -59,9 +59,9 @@ class PaymentController {
     try {
       const { payment_id } = req.params;
       const payment = await PaymentService.updatePayment(payment_id, req.body);
-      return res.status(200).json(payment);
+      return res.render('paymentUpdated', { payment });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.render('error', { error: error.message });
     }
   }
 
@@ -75,11 +75,12 @@ class PaymentController {
     try {
       const { payment_id } = req.params;
       const result = await PaymentService.deletePayment(payment_id);
-      return res.status(200).json(result);
+      return res.render('paymentDeleted', { result });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.render('error', { error: error.message });
     }
   }
+
 }
 
 module.exports = new PaymentController();

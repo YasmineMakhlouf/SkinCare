@@ -1,4 +1,5 @@
 const Appointment = require('../models/Appointment');
+const Service = require('../models/Service');
 
 class AppointmentRepository {
     /**
@@ -25,6 +26,13 @@ class AppointmentRepository {
    */
   async getAppointmentById(appointment_id) {
     return await Appointment.findByPk(appointment_id);
+  }
+
+  async getAppointmentsByUser(userId) {
+    return await Appointment.findAll({
+      where: { user_id: userId },
+      include: [{ model: Service, attributes: ['service_name'] }]
+    });
   }
 
   /**

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back to Amani Skin Care</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://fonts.cdnfonts.com/css/outfit" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Amani Skin Care</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/profile">My Profile</a>
+                <a href="/reviews">My Reviews</a>
+                <a href="/appointments">My Appointments</a>
+                <a href="/logout">Logout</a>
+              
+                <% if (user.isAdmin) { %>
+                  <a href="/dashboard">Admin Dashboard</a>
+                <% } %>
+              </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Welcome back, <%= user.name %>!</h1>
+            <p>Ready to continue your skincare journey? Here are the services you can explore:</p>
+        </section>
+
+        <section class="services">
+            <h2>Our Services</h2>
+            <div class="service-container">
+                <div class="service-card">
+                    <h3>Facial Treatments</h3>
+                    <p>Rejuvenate your skin with our tailored facial treatments.</p>
+                    <p class="price">$100</p>
+                    <button class="btn" onclick="window.location.href='/appointments'">Book Appointment</button>
+                </div>
+                <div class="service-card">
+                    <h3>Deep Cleansing</h3>
+                    <p>Get a deep cleanse and detoxify your skin.</p>
+                    <p class="price">$75</p>
+                    <button class="btn" onclick="window.location.href='/appointments'">Book Appointment</button>
+                </div>
+                <div class="service-card">
+                    <h3>Skin Care Consultation</h3>
+                    <p>Receive personalized advice on skincare routines.</p>
+                    <p class="price">$50</p>
+                    <button class="btn" onclick="window.location.href='/appointments'">Book Appointment</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>Service Pricing</h2>
+            <p>Browse our service prices below:</p>
+            <div class="pricing-details">
+                <div class="price-item">
+                    <h3>Facial Treatments</h3>
+                    <p>$100 per session</p>
+                </div>
+                <div class="price-item">
+                    <h3>Deep Cleansing</h3>
+                    <p>$75 per session</p>
+                </div>
+                <div class="price-item">
+                    <h3>Skin Care Consultation</h3>
+                    <p>$50 per session</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Amani Skin Care. All rights reserved.</p>
+    </footer>
+</body>
+</html>
